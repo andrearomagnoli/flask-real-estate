@@ -1,0 +1,25 @@
+Returns requested image
+---
+summary: Returns requested image
+parameters:
+  - in: path
+    name: image
+    required: true
+    description: Image filename
+    type: string
+responses:
+  200:
+    description: Image
+    content:
+      image/*:
+        schema:
+          type: string
+          format: binary
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Description of the error

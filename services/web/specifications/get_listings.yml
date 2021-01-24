@@ -1,0 +1,83 @@
+Returns a real estate listing
+---
+summary: Returns a real estate listing
+parameters:
+  - in: query
+    name: lookup_mode
+    required: false
+    description: Lookup mode (might be city or range)
+    type: string
+    enum: [city, range]
+    nullable: true
+  - in: query
+    name: city
+    required: false
+    description: City of the property
+    type: string
+  - in: query
+    name: range
+    required: false
+    description: Range expressed in kilometers
+    type: integer
+  - in: query
+    name: page
+    required: false
+    description: Page (starts with 1)
+    type: integer
+  - in: query
+    name: limit
+    required: false
+    description: Limit of results for each page
+    type: integer
+  - in: query
+    name: lat_from
+    required: false
+    description: Latitude
+    type: number
+  - in: query
+    name: long_from
+    required: false
+    description: Longitude
+    type: number
+responses:
+  200:
+    description: Real estate properties
+    schema:
+      type: array
+      items:
+        type: object
+        properties:
+          id:
+            type: string
+            description: Unique ID identifier
+          address:
+            type: string
+            description: Address of the property
+          city:
+            type: string
+            description: City of the property
+          price:
+            type: number
+            description: Price expressed in Euro
+          coordinates:
+            type: object
+            description: GPS coordinates of the property (latitude, longitude)
+            properties:
+              latitude:
+                type: string
+              longitude:
+                type: string
+          images:
+            type: object
+            description: Images of the property
+            properties:
+              content:
+                type: string
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Description of the error

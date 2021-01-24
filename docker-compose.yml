@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  database:
+    image: kartoza/postgis:13.0
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "docker", "-U", "root"]
+      timeout: 45s
+      interval: 5s
+      retries: 10
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASS=password
+      - POSTGRES_DB=docker
+      - ALLOW_IP_RANGE=0.0.0.0/0
+      - POSTGRES_MULTIPLE_EXTENSIONS=postgis,hstore,postgis_topology,postgis_raster,pgrouting
+    networks:
+      - samplenet
+  web:
+    build: services/web
+    command: python real_estate.py
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./services/web/:/usr/src/app/
+    ports:
+      - 8080:8080
+    environment:
+      - FLASK_APP=real_estate.py
+      - FLASK_ENV=development
+      - PGHOST=database
+    networks:
+      - samplenet
+networks:
+  samplenet:
+    driver: bridge

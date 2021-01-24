@@ -1,0 +1,19 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="django_blog.news.models.Writer.objects" />
+          <option value="django_blog.news.models.Post.objects" />
+          <option value="django_book_catalog.catalog.models.Book.objects" />
+          <option value="django_book_catalog.catalog.models.Genre.objects" />
+          <option value="django_book_catalog.catalog.models.Author.objects" />
+          <option value="django_demo_contact.contact.models.Message.*" />
+          <option value="django_demo_forum.core.views.forum" />
+          <option value="django.contrib.auth.models.User.object" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

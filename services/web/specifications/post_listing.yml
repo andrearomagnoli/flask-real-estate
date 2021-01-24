@@ -1,0 +1,82 @@
+Create a new real estate property
+---
+summary: Create a new real estate property
+parameters:
+  - in: body
+    name: real_estate
+    description: Real estate property
+    schema:
+      type: object
+      required:
+        - address
+        - city
+        - price
+        - coordinates
+        - images
+      properties:
+        address:
+          type: string
+          description: Address of the property
+        city:
+          type: string
+          description: City of the property
+        price:
+          type: number
+          description: Price expressed in Euro
+        coordinates:
+          type: array
+          description: GPS coordinates of the property (latitude, longitude)
+          items:
+            type: string
+            maximum: 2
+        images:
+          type: array
+          description: Images of the property
+          items:
+            type: string
+            format: base64
+responses:
+  200:
+    description: Real estate property
+    schema:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique ID identifier
+        address:
+          type: string
+          description: Address of the property
+        city:
+          type: string
+          description: City of the property
+        price:
+          type: number
+          description: Price expressed in Euro
+        coordinates:
+          type: array
+          description: GPS coordinates of the property (latitude, longitude)
+          items:
+            type: string
+            maximum: 2
+        images:
+          type: array
+          description: Images of the property
+          items:
+            type: string
+  400:
+    description: Bad request
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Description of the error
+  415:
+    description: Unsupported Media Type
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Description of the error
