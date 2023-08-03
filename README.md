@@ -2,9 +2,8 @@
 
 ## Purpose
 
-This is a simple REST APIs solution that allows to add new real estate properties, containing images and spatial
-coordinates, and return posted data. It allows filtering data by city or by range, otherwise you can choose to avoid
-specifying a lookup mode and require only optional values.
+REST APIs solution that allows to add new real estate properties, containing images and spatial
+coordinates, and return posted data. It allows filtering data by city or by range.
 
 Lookup mode `city`:
 
