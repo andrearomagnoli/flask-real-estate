@@ -2,8 +2,8 @@
 
 ## Purpose
 
-REST APIs solution that allows to add new real estate properties, containing images and spatial
-coordinates, and return posted data. It allows filtering data by city or by range.
+REST APIs solution for real estate properties management, that supports images and spatial coordinates.
+It allows filtering data by city or by range.
 
 Lookup mode `city`:
 
